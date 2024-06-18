@@ -1,0 +1,27 @@
+// Global style variables
+
+// Colors
+$primary-colour: #ff0000;
+$secondary-colour: #00ff00;
+
+$hero-colour: lighten(#1db372, 20%);
+$hero-colour-off: #fefbead3;
+
+$background-colour: #2d2d2d;
+
+// Fonts
+$font-family: "Roboto", sans-serif;
+$hero-font: "Sacramento", cursive;
+
+$font-colour: #e0e0e0;
+$font-colour-dark: #e0e0e011;
+$nav-font-colour: #e0e0e0;
+$nav-font-colour-dark: #e0e0e011;
+
+$hero-font-glow-colour: #1db372;
+$hero-font-glow-colour-deep: #16db0c;
+$hero-font-glow-colour-vibrant: #0eed3a;
+
+$hero-text-shadow: 0 0 5px $hero-font-glow-colour, 0 0 15px $hero-font-glow-colour, 0 0 20px $hero-font-glow-colour,
+  0 0 40px $hero-font-glow-colour, 0 0 60px $hero-font-glow-colour-deep, 0 0 10px $hero-font-glow-colour-vibrant, 0 0 98px $hero-font-glow-colour-deep;
+$hero-text-shadow-dark:3px 3px lighten(black, 5%);
