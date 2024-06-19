@@ -1,27 +1,55 @@
 // Global style variables
+@import url("https://fonts.googleapis.com/css?family=Sacramento&display=swap");
 
 // Colors
-$primary-colour: #ff0000;
-$secondary-colour: #00ff00;
+$primary-colour: #fefbead3;
+$secondary-colour: #e0e0e011;
+$highlight-colour: #1db372;
 
-$hero-colour: lighten(#1db372, 20%);
-$hero-colour-off: #fefbead3;
+$title-colour: lighten($highlight-colour, 20%);
+$title-colour-off: $primary-colour;
 
 $background-colour: #2d2d2d;
+$card-background-colour: darken($background-colour, 2%);
+
+$card-border-colour: $highlight-colour;
+$card-border-colour-off: $primary-colour;
 
 // Fonts
 $font-family: "Roboto", sans-serif;
-$hero-font: "Sacramento", cursive;
+$title-font: "Sacramento", cursive;
 
-$font-colour: #e0e0e0;
-$font-colour-dark: #e0e0e011;
-$nav-font-colour: #e0e0e0;
-$nav-font-colour-dark: #e0e0e011;
+$font-colour: $primary-colour;
+$font-colour-dark: $secondary-colour;
+$nav-font-colour: $primary-colour;
+$nav-font-colour-dark: $secondary-colour;
+$nav-font-colour-active: $highlight-colour;
 
-$hero-font-glow-colour: #1db372;
-$hero-font-glow-colour-deep: #16db0c;
-$hero-font-glow-colour-vibrant: #0eed3a;
+// Glows and shadows
+$title-font-glow-colour: $highlight-colour;
+$title-font-glow-colour-deep: #16db0c;
+$title-font-glow-colour-vibrant: #0eed3a;
 
-$hero-text-shadow: 0 0 5px $hero-font-glow-colour, 0 0 15px $hero-font-glow-colour, 0 0 20px $hero-font-glow-colour,
-  0 0 40px $hero-font-glow-colour, 0 0 60px $hero-font-glow-colour-deep, 0 0 10px $hero-font-glow-colour-vibrant, 0 0 98px $hero-font-glow-colour-deep;
-$hero-text-shadow-dark:3px 3px lighten(black, 5%);
+$title-text-glow: 0 0 5px $title-font-glow-colour,
+  0 0 15px $title-font-glow-colour, 0 0 20px $title-font-glow-colour,
+  0 0 40px $title-font-glow-colour, 0 0 60px $title-font-glow-colour-deep,
+  0 0 10px $title-font-glow-colour-vibrant,
+  0 0 98px $title-font-glow-colour-deep;
+
+$title-text-shadow: 3px 3px lighten(black, 5%);
+
+$border-glow-color: $title-font-glow-colour;
+$border-glow-color-deep: $title-font-glow-colour-deep;
+$border-glow-color-vibrant: $title-font-glow-colour-vibrant;
+
+$card-border-glow: 0 0 4px $border-glow-color, 0 0 6px $border-glow-color-deep,
+  0 0 8px $border-glow-color-vibrant;
+$card-border-glow-hover: 0 0 8px $border-glow-color,
+0 0 10px $border-glow-color-deep, 0 0 12px $border-glow-color-vibrant;
+
+$svg-glow-effect: drop-shadow(0 0 3px $border-glow-color);
+
+$button-border-glow: 0 0 2px $border-glow-color, 0 0 3px $border-glow-color-deep,
+  0 0 4px $border-glow-color-vibrant;
+$button-border-glow-hover: 0 0 5px $border-glow-color,
+0 0 6px $border-glow-color-deep, 0 0 7px $border-glow-color-vibrant;

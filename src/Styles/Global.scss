@@ -1,8 +1,19 @@
 @import 'variables';
-@import url("https://fonts.googleapis.com/css?family=Sacramento&display=swap");
 
 ///////////////////////////////////////////////////////////
-// Global styles - Desktop
+// Global styles
+// Force the scrollbar to always be visible to prevent layout shift
+html {
+  overflow-y: scroll;
+}
+
+// Hide the scrollbar so it isn't ugly
+html::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 body {
   font-family: $font-family;
   background-color: $background-colour;
@@ -10,8 +21,66 @@ body {
 }
 
 h1 {
-  color: $hero-colour;
+  color: $title-colour;
   font-size: 3rem;
+}
+// Media query for mobile devices
+.desktop-only {
+  @media screen and (max-width: 1079px) {
+    display: none;
+  }
+}
+// Media query for desktop devices
+.mobile-only {
+  @media screen and (min-width: 1080px) {
+    display: none;
+  }
+}
+
+///////////////////////////////////////////////////////////
+/// Scroll Indicator styles
+.scroll-indicator {
+  width: 2rem;
+  height: 2rem;
+  filter: $svg-glow-effect;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.scroll-indicator-container {
+  display: none;
+  position: fixed;
+  align-items: center;
+  fill: $highlight-colour;
+  position: fixed;
+  z-index: 100;
+  border: 1px solid $card-border-colour;
+  box-shadow: $button-border-glow;
+  border-radius: 10px;
+  height: 2.5rem;
+  width: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: $button-border-glow-hover;
+    &.top {
+      transform: translateY(-5px);
+    }
+    &.bottom {
+      transform: translateY(5px);
+    }
+  }
+  &.bottom {
+    bottom:2vh;
+    left:1vw;
+  }
+  &.top {
+    top:2vh;
+    left:1vw;
+  }
 }
 
 ///////////////////////////////////////////////////////////
@@ -24,21 +93,21 @@ h1 {
   margin-right: 3vw;
   margin-top: 2rem;
 }
-/// Hero section
-.hero-text {
+/// title section
+.title-text {
   font-size: 4rem;
-  color: lighten($hero-colour, 20%);
-  text-shadow: $hero-text-shadow;
-  font-family: $hero-font;
+  color: lighten($title-colour, 20%);
+  text-shadow: $title-text-glow;
+  font-family: $title-font;
   width:fit-content;
   max-width: 70vw;;
 }
 
-.hero-text-dark {
+.title-text-dark {
   font-size: 4rem;
-  color: $hero-colour-off;
-  text-shadow: $hero-text-shadow-dark;
-  font-family: $hero-font;
+  color: $title-colour-off;
+  text-shadow: $title-text-shadow;
+  font-family: $title-font;
 }
 /// Flickering effect
 @keyframes flicker {
@@ -60,7 +129,7 @@ h1 {
 .subtitle {
   margin-left: 1vw;
   font-size: 1.5rem;
-  color: $hero-colour-off;
+  color: $title-colour-off;
   text-align: left;
   max-width: 70vw;
   & span {
@@ -104,14 +173,15 @@ h1 {
 ///////////////////////////////////////////////////////////
 /// NavBar styles
 .navBar {
+  cursor: pointer;
   margin-left: 5vw;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   position: sticky;
-  top: 32vh;
   width: fit-content;
   height: fit-content;
+  top: 150px;
   @media screen and (max-width: 768px){
     top: 20px;
   }
@@ -120,11 +190,46 @@ h1 {
 .nav-link {
   color: $nav-font-colour;
   font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.2);
+  }
+  &.active {
+    color: $nav-font-colour-active;
+    font-size: 1.8rem;
+    top: 0;
+  }
 }
 
-.nav-link-dark {
+.nav-link-off {
   color: $nav-font-colour-dark;
   font-size: 1.5rem;
+  top: 0;
+}
+
+///////////////////////////////////////////////////////////
+/// Card styles
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid $card-border-colour;
+  box-shadow: $card-border-glow;
+  background-color: $card-background-colour;
+  transition: all 0.3s ease-in-out;
+  &.off {
+    display: none;
+  }
+  &:hover {
+    box-shadow: $card-border-glow-hover;
+    transform: scale(1.01);
+  }
 }
 
 ///////////////////////////////////////////////////////////
@@ -142,7 +247,7 @@ h1 {
   height: fit-content;
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .column-container {

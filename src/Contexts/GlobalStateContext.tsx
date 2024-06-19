@@ -34,7 +34,6 @@ export const GlobalStateProvider: React.FC<{ children: React.ReactNode }> = ({ c
   };
 
   const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
-    console.log(ref.current);
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 

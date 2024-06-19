@@ -12,7 +12,7 @@ const NavBar: React.FC<NavBarProps> = ({ style }) => {
   const linkClass = classNames({
     'flicker-effect': isFlickering,
     'nav-link': isSwitchOn,
-    'nav-link-dark': !isSwitchOn,
+    'nav-link-off': !isSwitchOn && !isFlickering,
   });
 
   return (

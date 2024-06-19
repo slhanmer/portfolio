@@ -1,19 +1,28 @@
-import React from 'react';
-import { CardDisplay, Title, NavBar } from '../Components';
+import React, { useEffect } from 'react';
+import { CardDisplay, Title, NavBar, ScrollIndicator } from '../Components';
 import useCardData from '../Data/CardData';
+import { useGlobalState } from '../Contexts/GlobalStateContext';
 
 type HomeProps = {};
 
 const Home: React.FC<HomeProps> = () => {
   const cards = useCardData();
+  const { isSwitchOn } = useGlobalState();
+
+  useEffect(() => {
+    if (!isSwitchOn) {
+      window.scrollTo(0, 0);
+    }
+  }, [isSwitchOn]);
 
   return (
     <div>
-      <Title title='Simon Hanmer' subTitle={<>Former Chef turned Developer<br /><span>... cooking up code with the same passion I brought to the kitchen</span></>} />
+      <Title title='Simon Hanmer' subTitle={<>Former Chef turned Developer<br /></>} />
       <div className='page-container'>
         <NavBar />
-        <CardDisplay cards={cards} />
+          <CardDisplay cards={cards} />
       </div>
+      <ScrollIndicator />
     </div>
   );
 }; 

@@ -19,7 +19,7 @@ const FlickeringTitle: React.FC<FlickeringTitleProps> = ({ title, subTitle }) =>
   return (
     <div className='title'>
       <div className='column-container'>
-        <div className={`${isFlickering ? 'flicker-effect' : ''} ${isSwitchOn ? 'hero-text' : 'hero-text-dark'}`}>
+        <div className={`${isFlickering ? 'flicker-effect' : ''} ${isSwitchOn ? 'title-text' : 'title-text-dark'}`}>
           {title}
         </div> 
         {subTitle && <SubTitle subTitle={subTitle} className={`${isFlickering ? ' flicker-effect' : ''} ${!isSwitchOn ? ' dark' : ''}`}/>}

@@ -6,3 +6,4 @@ export { default as Card } from './Card';
 export { default as SubTitle } from './SubTitle';
 export { default as Title } from './Title';
 export { default as CardDisplay } from './CardDisplay';
+export { default as ScrollIndicator } from './ScrollIndicator';
