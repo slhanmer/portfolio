@@ -7,8 +7,8 @@ type NavBarProps = {
 };
 
 const NavBar: React.FC<NavBarProps> = ({ style }) => {
-  const { isFlickering, isSwitchOn, aboutRef, projectsRef, contactRef, scrollToRef } = useGlobalState();
-
+  const { isFlickering, isSwitchOn, aboutRef, projectsRef, contactRef, scrollToRef, aboutVisible, projectsVisible, contactVisible } = useGlobalState();
+  
   const linkClass = classNames({
     'flicker-effect': isFlickering,
     'nav-link': isSwitchOn,
@@ -17,9 +17,9 @@ const NavBar: React.FC<NavBarProps> = ({ style }) => {
 
   return (
     <nav className='navBar' style={style}>
-      <div className={linkClass} onClick={() => scrollToRef(aboutRef)}>About Me</div>
-      <div className={linkClass} onClick={() => scrollToRef(projectsRef)}>Projects</div>
-      <div className={linkClass} onClick={() => scrollToRef(contactRef)}>Contact</div>
+      <div className={`${linkClass} ${aboutVisible ? 'active' : ''}`} onClick={() => scrollToRef(aboutRef)}>About Me</div>
+      <div className={`${linkClass} ${projectsVisible ? 'active' : ''}`} onClick={() => scrollToRef(projectsRef)}>Projects</div>
+      <div className={`${linkClass} ${contactVisible ? 'active' : ''}`} onClick={() => scrollToRef(contactRef)}>Contact</div>
     </nav>
   );
 };

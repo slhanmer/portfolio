@@ -7,3 +7,6 @@ export { default as SubTitle } from './SubTitle';
 export { default as Title } from './Title';
 export { default as CardDisplay } from './CardDisplay';
 export { default as ScrollIndicator } from './ScrollIndicator';
+export { default as SocialMediaIcons } from './SocialMedia';
+export { default as Spacer } from './Spacer';
+export { default as Timeline } from './Timeline';

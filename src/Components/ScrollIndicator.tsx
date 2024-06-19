@@ -1,8 +1,8 @@
 import React from 'react';
 import { ReactComponent as DownArrow } from '../Images/scrollDown.svg';
 import { ReactComponent as UpArrow } from '../Images/scrollUp.svg';
-import useScrollIndicators from '../HelperFunctions/useScrollIndicators';
-import useScrollPosition from '../HelperFunctions/useScrollPosition';
+import useScrollIndicators from '../CustomHooks/useScrollIndicators';
+import useScrollPosition from '../CustomHooks/useScrollPosition';
 
 type ScrollIndicatorProps = {
   style?: React.CSSProperties;

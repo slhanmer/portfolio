@@ -27,7 +27,6 @@ const useScrollPosition = () => {
       window.removeEventListener('resize', handleScroll);
     };
   }, []);
-  console.log(position);
   return position;
 };
 

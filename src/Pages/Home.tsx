@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CardDisplay, Title, NavBar, ScrollIndicator } from '../Components';
+import { CardDisplay, Title, NavBar, ScrollIndicator, Spacer } from '../Components';
 import useCardData from '../Data/CardData';
 import { useGlobalState } from '../Contexts/GlobalStateContext';
 
@@ -20,8 +20,9 @@ const Home: React.FC<HomeProps> = () => {
       <Title title='Simon Hanmer' subTitle={<>Former Chef turned Developer<br /></>} />
       <div className='page-container'>
         <NavBar />
-          <CardDisplay cards={cards} />
+        <CardDisplay cards={cards} />
       </div>
+      <Spacer rem={6}/>
       <ScrollIndicator />
     </div>
   );
