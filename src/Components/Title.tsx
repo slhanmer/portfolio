@@ -8,13 +8,21 @@ type FlickeringTitleProps = {
 };
 
 const FlickeringTitle: React.FC<FlickeringTitleProps> = ({ title, subTitle }) => {
-  const { isSwitchOn, isFlickering } = useGlobalState();
+  const { isSwitchOn, setIsFlickering, isFlickering } = useGlobalState();
 
   useEffect(() => {
+    if (isSwitchOn) {
+      // Start the flickering effect
+      setIsFlickering(true);
       const timer = setTimeout(() => {
+        setIsFlickering(false);  // Turn off flickering after 1.5 seconds
       }, 1500);
       return () => clearTimeout(timer);
-  }, [isSwitchOn]);
+    } else {
+      // Ensure flickering is turned off when switch is off
+      setIsFlickering(false);
+    }
+  }, [isSwitchOn, setIsFlickering]);
 
   return (
     <div className='title'>

@@ -1,5 +1,7 @@
 import { useGlobalState } from '../Contexts/GlobalStateContext';
 import { SocialMediaIcons, Timeline } from '../Components';
+import { Spacer } from '../Components';
+import resumePDF from '../Assets/SimonHanmerResume.pdf';
 
 // Custom hook to provide data for the cards
 const useCardData = () => {
@@ -9,8 +11,10 @@ const useCardData = () => {
     { id: 1, content: 
       <>
      <p>Hi, I'm Simon Hanmer, a former chef turned developer based in Brisbane, Australia.</p>
-     <p>Here is a brief overview of my 'journey' - cringe reality TV reference out of the way now I promise.</p>
+     <p>Here is a brief overview of my 'journey' - cringe reality TV references out of the way now I promise.</p>
       <Timeline />
+      <Spacer rem={2}/>
+      <a href={resumePDF} target='_blank' rel="noreferrer">View my full resume</a>
       </>, 
       ref: aboutRef 
     },

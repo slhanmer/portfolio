@@ -5,6 +5,7 @@ interface GlobalState {
   isSwitchOn: boolean;
   isFlickering: boolean;
   toggleSwitch: () => void;
+  setIsFlickering: (flickering: boolean) => void;  // Add this line
   aboutRef: React.RefObject<HTMLDivElement>;
   projectsRef: React.RefObject<HTMLDivElement>;
   contactRef: React.RefObject<HTMLDivElement>;
@@ -16,6 +17,7 @@ interface GlobalState {
   setContactVisible: (visible: boolean) => void;
   scrollToRef: (ref: React.RefObject<HTMLDivElement>) => void;
 }
+
 
 const GlobalStateContext = createContext<GlobalState | undefined>(undefined);
 
@@ -40,30 +42,22 @@ export const GlobalStateProvider: React.FC<{ children: React.ReactNode }> = ({ c
   };
 
   useEffect(() => {
-    interface MostVisible {
-      ref: Element | null;
-      ratio: number;
-    }
-
     const observer = new IntersectionObserver((entries) => {
-      let mostVisible: MostVisible = { ref: null, ratio: 0 };
+      let mostVisible: { ref: Element | null; ratio: number; } = { ref: null, ratio: 0 };
       entries.forEach(entry => {
-        const { intersectionRatio } = entry;
-        if (intersectionRatio > mostVisible.ratio) {
-          mostVisible = { ref: entry.target, ratio: intersectionRatio };
+        if (entry.intersectionRatio > mostVisible.ratio) {
+          mostVisible = { ref: entry.target, ratio: entry.intersectionRatio };
         }
       });
 
-      // Reset all visibility states
       setAboutVisible(false);
       setProjectsVisible(false);
       setContactVisible(false);
 
-      // Set the most visible element as active
       if (mostVisible.ref === aboutRef.current) setAboutVisible(true);
       if (mostVisible.ref === projectsRef.current) setProjectsVisible(true);
       if (mostVisible.ref === contactRef.current) setContactVisible(true);
-      
+
     }, { threshold: [0, 0.1, 0.5, 0.9] });
 
     if (aboutRef.current) observer.observe(aboutRef.current);
@@ -75,7 +69,7 @@ export const GlobalStateProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
   return (
     <GlobalStateContext.Provider value={{
-      isSwitchOn, isFlickering, toggleSwitch,
+      isSwitchOn, isFlickering, toggleSwitch, setIsFlickering,  // Add setIsFlickering here
       aboutRef, projectsRef, contactRef,
       aboutVisible, projectsVisible, contactVisible,
       setAboutVisible, setProjectsVisible, setContactVisible,
@@ -85,6 +79,7 @@ export const GlobalStateProvider: React.FC<{ children: React.ReactNode }> = ({ c
     </GlobalStateContext.Provider>
   );
 };
+
 
 export const useGlobalState = () => {
   const context = useContext(GlobalStateContext);
